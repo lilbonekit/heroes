@@ -120,9 +120,9 @@ const HeroesAddForm = () => {
 
 const heroesFilter = (filtersDataArray) => {
     if (!filtersDataArray) {
-        return <h5>Загрузка данных...</h5>;
+        return null
     } else {
-        return filtersDataArray.map(filterData => (
+        return filtersDataArray.filter(el => el[0] !== 'all').map(filterData => (
             <option key={filterData[0]} value={filterData[0]}>{filterData[1]}</option>
         ));
     }
