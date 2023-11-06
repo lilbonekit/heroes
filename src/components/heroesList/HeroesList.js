@@ -44,14 +44,7 @@ const HeroesList = () => {
         }
 
         // Чейнингом сначала фильтруем, а потом передаем, а потом внутри HeroesListItem отрисовываем
-        return arr.filter(el => {
-            if (currentFilter === 'all') {
-                return true
-            } else if(currentFilter !== 'all' && el.element.includes(currentFilter)) {
-                return true
-            }
-            return false
-        }).map(({id, ...props}) => {
+        return arr.filter(el => (currentFilter === 'all' || el.element.includes(currentFilter))).map(({id, ...props}) => {
             return <HeroesListItem key={id} {...props} id={id} onRemoveHero={onRemoveHero}/>
         })
 
