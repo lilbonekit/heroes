@@ -7,38 +7,43 @@
       "element": "fire"
     },
     {
-      "name": "фывыф",
-      "description": "ыфвыфв",
-      "element": "earth",
-      "id": "c57ca362-4601-44b9-b7a9-4bf635b76122"
+      "name": "Ветер",
+      "description": "Ветер",
+      "element": "wind",
+      "id": "7ece561b-e75b-4901-a974-3c75ec29ef78"
     },
     {
-      "name": "asdsad",
-      "description": "asd",
-      "element": "earth",
-      "id": "ad464250-10a3-4991-9a69-d08baf158362"
+      "name": "іфв",
+      "description": "іфвіфвіфв",
+      "element": "water",
+      "id": "a970a817-6e73-44cd-91a2-0c265caf62ae"
     }
   ],
   "filters": [
     [
       "all",
-      "Все"
+      "Все",
+      "btn-outline-dark"
     ],
     [
       "fire",
-      "Огонь"
+      "Огонь",
+      "btn-danger"
     ],
     [
       "water",
-      "Вода"
+      "Вода",
+      "btn-primary"
     ],
     [
       "wind",
-      "Ветер"
+      "Ветер",
+      "btn-success"
     ],
     [
       "earth",
-      "Земля"
+      "Земля",
+      "btn-secondary"
     ]
   ]
 }

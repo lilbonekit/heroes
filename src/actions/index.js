@@ -34,3 +34,21 @@ export const heroAdding = (newHero) => {
         }
     }
 }
+
+export const filtersLoading = (filters) => {
+    return {
+        type: 'FILTERS_LOADING',
+        payload: {
+            filters
+        }
+    }
+}
+
+export const selectFilter = (filter) => {
+    return {
+        type: 'SET_FILTER',
+        payload: {
+            filter
+        }
+    }
+}

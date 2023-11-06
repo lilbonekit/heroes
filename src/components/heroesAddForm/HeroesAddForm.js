@@ -4,7 +4,7 @@ import {v4 as uuidv4} from 'uuid';
 import { useState, useEffect } from 'react'
 import useInput from "../../hooks/useInput";
 import { useDispatch } from 'react-redux';
-import { heroAdding } from '../../actions';
+import { heroAdding, filtersLoading } from '../../actions';
 import { useHttp } from '../../hooks/http.hook';
 // Задача для этого компонента: ✅
 // Реализовать создание нового героя с введенными данными. Он должен попадать ✅
@@ -28,8 +28,14 @@ const HeroesAddForm = () => {
 
     useEffect(() => {
         request('http://localhost:3001/filters')
-            .then(res => setFilters(res))
-            .catch(error => console.error(`Не получилось фетчануть ошибка ${error}`))
+            .then(res => {
+                // Установим локально
+                setFilters(res)
+                // и в глобальный стейт
+                dispatch(filtersLoading(res))
+            })
+            .catch(error => console.error(`Не получилось фетчануть фильтры ошибка ${error}`))
+        // eslint-disable-next-line
     }, [])
 
 
