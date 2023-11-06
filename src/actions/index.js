@@ -16,3 +16,21 @@ export const heroesFetchingError = () => {
         type: 'HEROES_FETCHING_ERROR'
     }
 }
+
+export const heroRemoving = (id) => {
+    return {
+        type: 'HERO_DELETING',
+        payload: {
+            id
+        }
+    }
+}
+
+export const heroAdding = (newHero) => {
+    return {
+        type: 'HERO_ADDING',
+        payload: {
+            newHero
+        }
+    }
+}
