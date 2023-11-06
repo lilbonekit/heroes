@@ -19,13 +19,14 @@ const HeroesFilters = () => {
     // но нам так же нужно в глобальном стейте сделать фильтрацию на основе этого выбора
     const [activeFilter, setActiveFilter] = useState('all')
     // Достанем стейт
-    const state = useSelector(state => state)
+    const state = useSelector(state => state.filters) 
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         setFilters(...state.filters)
     }, [state])
+
 
     const onFilterChange = (filterName) => {
         setActiveFilter(filterName)

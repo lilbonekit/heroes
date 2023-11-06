@@ -1,30 +1,5 @@
 {
-  "heroes": [
-    {
-      "name": "sad",
-      "description": "asd",
-      "element": "fire",
-      "id": "eb5d6861-9da6-436e-b665-49f3c51e67c0"
-    },
-    {
-      "name": "dfsd",
-      "description": "dsfdsf",
-      "element": "water",
-      "id": "791b1dd8-3d8c-4a2a-a565-a2ffa959a293"
-    },
-    {
-      "name": "dsf",
-      "description": "sdfdsf",
-      "element": "earth",
-      "id": "41705fd4-1711-4188-ae77-7a461ea46524"
-    },
-    {
-      "name": "фыв",
-      "description": "фывыфв",
-      "element": "earth",
-      "id": "2df05a34-ea67-41a6-94c0-53ade0f1360c"
-    }
-  ],
+  "heroes": [],
   "filters": [
     [
       "all",
