@@ -26,6 +26,9 @@ const HeroesAddForm = () => {
     // будем постить данные
     const { request } = useHttp()
 
+    // Отправляем данные на сервер в формате JSON
+    // ТОЛЬКО если запрос успешен - отправляем фильтры в store
+    // Тут я этот момент продумал, таким образом не придётся дважды делать запрос, по сути, на одни и те же данные
     useEffect(() => {
         request('http://localhost:3001/filters')
             .then(res => {
@@ -59,6 +62,7 @@ const HeroesAddForm = () => {
 
         dispatch(heroAdding(newHero))
 
+        // Это моя кастомная функция по установлению стейта в initialValue
         nameInput.clear()
         descInput.clear()
         selectInput.clear()

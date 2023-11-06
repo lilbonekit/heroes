@@ -3,7 +3,7 @@ import './HeroesList.scss';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import {useHttp} from '../../hooks/http.hook';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { heroesFetching, heroesFetched, heroesFetchingError, heroRemoving } from '../../actions';
@@ -29,12 +29,16 @@ const HeroesList = () => {
         // eslint-disable-next-line
     }, []);
 
-    const onRemoveHero = (id) => {
-        dispatch(heroRemoving(id))
+    // Чуть доработал:
+    // Во-первых, обернул в useCallback, так как мы будем передавать эту функцию ниже
+    // Во-вторых, мы удаляем персонажа ТОЛЬКО, если запрос прошёл успешно!
+    const onRemoveHero = useCallback((id) => {
         request(`http://localhost:3001/heroes/${id}`, 'DELETE')
             .then(() => console.log('Успешно удалено!'))
+            .then(() => dispatch(heroRemoving(id)))
             .catch(() => console.log('Неуспешно удалено!'))
-    }
+         // eslint-disable-next-line  
+    }, [request])
 
     if (heroesLoadingStatus === "loading") {
         return <Spinner/>;
@@ -48,7 +52,7 @@ const HeroesList = () => {
         }
 
         return (
-            // Чейнингом сначала фильтруем, а потом передаем, а потом внутри HeroesListItem отрисовываем
+            // Чейнингом сначала фильтруем, а потом передаем в map, а потом внутри HeroesListItem отрисовываем
             <TransitionGroup>
                 {arr
                     .filter(el => (currentFilter === 'all' || el.element.includes(currentFilter)))
