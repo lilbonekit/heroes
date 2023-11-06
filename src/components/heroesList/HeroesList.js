@@ -1,3 +1,7 @@
+import './HeroesList.scss';
+
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,11 +47,19 @@ const HeroesList = () => {
             return <h5 className="text-center mt-5">Героев пока нет</h5>
         }
 
-        // Чейнингом сначала фильтруем, а потом передаем, а потом внутри HeroesListItem отрисовываем
-        return arr.filter(el => (currentFilter === 'all' || el.element.includes(currentFilter))).map(({id, ...props}) => {
-            return <HeroesListItem key={id} {...props} id={id} onRemoveHero={onRemoveHero}/>
-        })
-
+        return (
+            // Чейнингом сначала фильтруем, а потом передаем, а потом внутри HeroesListItem отрисовываем
+            <TransitionGroup>
+                {arr
+                    .filter(el => (currentFilter === 'all' || el.element.includes(currentFilter)))
+                    .map(({ id, ...props }) => (
+                        <CSSTransition key={id} classNames="hero" timeout={300}>
+                            <HeroesListItem key={id} {...props} id={id} onRemoveHero={onRemoveHero} />
+                        </CSSTransition>
+                    ))
+                }
+            </TransitionGroup>
+        );
     }
 
     const elements = renderHeroesList(heroes);

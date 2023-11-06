@@ -8,7 +8,7 @@ const useInput = (initialValue) => {
     }
 
     const clear = () => {
-        setInputValue('')
+        setInputValue(initialValue)
     }
 
     return {inputValue, onValueChange, clear}
