@@ -6,8 +6,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchHeroes } from '../../actions';
-import { heroRemoving } from './heroesSlice';
+import { heroRemoving, fetchHeroes } from './heroesSlice';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -25,7 +24,7 @@ const HeroesList = () => {
     const {request} = useHttp();
 
     useEffect(() => {
-        dispatch(fetchHeroes(request)); //Тут работает наш enhancer redux thunk
+        dispatch(fetchHeroes()); //Тут работает наш enhancer redux thunk
     
         // eslint-disable-next-line
     }, []);
