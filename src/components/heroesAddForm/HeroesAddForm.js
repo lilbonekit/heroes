@@ -4,7 +4,8 @@ import {v4 as uuidv4} from 'uuid';
 import { useState, useEffect } from 'react'
 import useInput from "../../hooks/useInput";
 import { useDispatch } from 'react-redux';
-import { heroAdding, filtersLoading } from '../../actions';
+import { fetchFilters } from '../../actions';
+import { heroAdding } from '../heroesList/heroesSlice';
 import { useHttp } from '../../hooks/http.hook';
 // Задача для этого компонента: ✅
 // Реализовать создание нового героя с введенными данными. Он должен попадать ✅
@@ -30,14 +31,7 @@ const HeroesAddForm = () => {
     // ТОЛЬКО если запрос успешен - отправляем фильтры в store
     // Тут я этот момент продумал, таким образом не придётся дважды делать запрос, по сути, на одни и те же данные
     useEffect(() => {
-        request('http://localhost:3001/filters')
-            .then(res => {
-                // Установим локально
-                setFilters(res)
-                // и в глобальный стейт
-                dispatch(filtersLoading(res))
-            })
-            .catch(error => console.error(`Не получилось фетчануть фильтры ошибка ${error}`))
+        dispatch(fetchFilters(request, setFilters)) //та вроде сделал
         // eslint-disable-next-line
     }, [])
 

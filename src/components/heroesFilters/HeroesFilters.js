@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import {v4 as uuidv4} from 'uuid';
 
-import { selectFilter } from "../../actions"
+import { selectFilter } from "../heroesFilters/filtersSlice"
 
 // Задача для этого компонента: ✅
 // Фильтры должны формироваться на основании загруженных данных ✅
@@ -24,7 +24,7 @@ const HeroesFilters = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        setFilters(...state.filters)
+            setFilters(state.filters)
     }, [state])
 
 
